@@ -2,10 +2,10 @@ const Report = require('../models/reportModel');
 
 // Create a new report
 const createReport = async (req, res) => {
-  const { userId, courseId, content } = req.body;
+  const { userId, courseId, attendance, grades } = req.body;
 
   try {
-    const newReport = new Report({ userId, courseId, content });
+    const newReport = new Report({ userId, courseId, attendance, grades });
     await newReport.save();
     res.status(201).json(newReport);
   } catch (error) {

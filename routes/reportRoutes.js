@@ -1,4 +1,5 @@
 const express = require('express');
+const {authMiddleware} = require('../middlewares/authentication');
 const {
     createReport,
     getAllReports,
@@ -10,7 +11,7 @@ const {
 const router = express.Router();
 
 // Report routes
-router.post('/', createReport);
+router.post('/',authMiddleware(['admin']), createReport);
 router.get('/', getAllReports);
 router.get('/:id', getReportById);
 router.put('/:id', updateReport);
